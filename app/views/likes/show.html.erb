@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Like #<%= @like.id %></h3>
+  <h3>Like #<%= @likes.id %></h3>
 </div>
 
 <div class="row">
@@ -7,17 +7,23 @@
     <dl class="dl-horizontal">
 
       <dt>Photo</dt>
-      <dd><%= @like.photo.image %></dd>
+      <dd><%= @likes.photo.try(:image) %></dd>
     </dl>
+
+<dl class="dl-horizontal">
+    <dt> Caption </dt>
+    <dd> <%= @likes.photo.caption %></dd>
+
+</dl>
 
     <div class="btn-group btn-group-justified">
       <a href="/likes" class="btn btn-primary">
         Back
       </a>
-      <a href="/likes/<%= @like.id %>/edit" class="btn btn-warning">
+      <a href="/likes/<%= @likes.id %>/edit" class="btn btn-warning">
         Edit
       </a>
-      <a href="/delete_like/<%= @like.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_like/<%= @likes.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
     </div>

@@ -20,6 +20,8 @@
               <% @user.photos.each do |photo| %>
               <a href="/photos/<%= photo.id %>">
                 <img src="<%= photo.image %>" class="responsive"> </a>
+                <p> <%= photo.caption %>
+                </p>
                 <% end %>
                 <p>
                 </p>

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
   end
 
   def show
-    @like = Like.find(params[:id])
+    @likes = Like.find(params[:id])
 
     render("likes/show.html.erb")
   end
