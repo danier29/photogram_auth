@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   def index
-    @likes = Like.all
+    @likes = Like.all.where({:user_id => current_user.id})
 
     render("likes/index.html.erb")
   end
@@ -9,6 +9,12 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
 
     render("likes/show.html.erb")
+  end
+
+  def mylikes
+    @likes = Like.all.where({:user_id => current_user.id})
+
+    render("likes/index.html.erb")
   end
 
   def new

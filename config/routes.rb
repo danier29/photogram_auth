@@ -1,4 +1,25 @@
 Rails.application.routes.draw do
+  devise_for :users
+  # Routes for the User resource:
+
+  root "photos#index"
+
+  # CREATE
+  get "/users/new", :controller => "users", :action => "new"
+  post "/create_user", :controller => "users", :action => "create"
+
+  # READ
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
+
+  # UPDATE
+  get "/users/:id/edit", :controller => "users", :action => "edit"
+  post "/update_user/:id", :controller => "users", :action => "update"
+
+  # DELETE
+  get "/delete_user/:id", :controller => "users", :action => "destroy"
+  #------------------------------
+
   # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
@@ -24,6 +45,7 @@ Rails.application.routes.draw do
   # READ
   get "/likes", :controller => "likes", :action => "index"
   get "/likes/:id", :controller => "likes", :action => "show"
+  get "/my_likes", :controller => "likes", :action => "mylikes"
 
   # UPDATE
   get "/likes/:id/edit", :controller => "likes", :action => "edit"
@@ -31,6 +53,8 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_like/:id", :controller => "likes", :action => "destroy"
+
+
   #------------------------------
 
   # Routes for the Photo resource:
@@ -50,6 +74,7 @@ Rails.application.routes.draw do
   get "/delete_photo/:id", :controller => "photos", :action => "destroy"
   #------------------------------
 
-  devise_for :users
+  root "photos#index"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
